@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -753,6 +754,51 @@
         >!
       </p>
     </footer>
+<script>
+  // Stop the form from submitting anywhere
+  document.querySelector("form")?.addEventListener("submit", e => e.preventDefault());
+
+  // Map broken data-select-id values to real classes
+  const SELECT_ALIASES = {
+    "pelt-name-select": "pattern-type-select"
+  };
+
+  document.querySelectorAll("button").forEach(btn => {
+    // Prevent ALL buttons from submitting the form
+    btn.type = "button";
+  });
+
+  document.querySelectorAll(".random-button").forEach(button => {
+    button.addEventListener("click", e => {
+      e.preventDefault();
+
+      let key = button.dataset.selectId;
+      if (!key) return;
+
+      // Fix bad IDs via alias table
+      key = SELECT_ALIASES[key] ?? key;
+
+      // Try ID first, then class
+      const select =
+        document.getElementById(key) ||
+        document.querySelector("." + key);
+
+      if (!select || select.disabled) return;
+
+      const options = Array.from(select.options).filter(
+        o => o.value !== "" && !o.disabled
+      );
+
+      if (!options.length) return;
+
+      const pick = options[Math.floor(Math.random() * options.length)];
+      select.value = pick.value;
+
+      // Force update for sprite logic
+      select.dispatchEvent(new Event("change", { bubbles: true }));
+    });
+  });
+</script>
 
     <script type="module" src="/src/main.ts"></script>
   </body>
