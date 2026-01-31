@@ -12,55 +12,17 @@
       name="google-site-verification"
       content="Pq-11M4oWkyd6Xt8Z-M-MTF0pm-jn-LPDpj9G-JcwD0"
     />
-
-    <style>
-      /* Tiny styling so sections don't look like chaos */
-      form {
-        max-width: 720px;
-      }
-      .section-title {
-        margin: 18px 0 10px;
-        padding: 10px 12px;
-        font-weight: 700;
-        border-radius: 10px;
-        background: rgb(0 0 0 / 0.06);
-      }
-      .form-row {
-        display: grid;
-        grid-template-columns: 160px 1fr auto;
-        gap: 10px;
-        align-items: center;
-        margin: 8px 0;
-      }
-      .form-row label {
-        font-weight: 600;
-      }
-      .form-row input[type="checkbox"] {
-        justify-self: start;
-      }
-      .wide-row {
-        grid-template-columns: 1fr;
-      }
-      .actions {
-        margin-top: 12px;
-        display: grid;
-        gap: 10px;
-      }
-    </style>
   </head>
-
   <body>
     <header>
       <a href="index.html">Utahraptor Maker</a> |
       <a href="predict-offspring.html">Predict Offspring</a>
     </header>
 
-    <!-- Keep this class name unless you also update your TS code -->
     <img draggable="true" class="cat-sprite-img" style="image-rendering: pixelated" />
 
     <form>
-      <!-- ===================== Genetics ===================== -->
-      <div class="section-title">Genetics</div>
+      <h2>Genetics</h2>
 
       <div class="form-row">
         <label>Growth</label>
@@ -98,7 +60,7 @@
       </div>
 
       <div class="form-row">
-        <label>Eye color</label>
+        <label>Eye Colour</label>
         <select class="eye-colour-select">
           <option>YELLOW</option>
           <option>AMBER</option>
@@ -126,7 +88,7 @@
       </div>
 
       <div class="form-row">
-        <label>Eye color 2</label>
+        <label>Eye Colour 2</label>
         <select class="eye-colour2-select">
           <option value=""></option>
           <option>YELLOW</option>
@@ -291,8 +253,7 @@
         <button type="button" class="random-button" data-select-id="tint-select">🔀</button>
       </div>
 
-      <!-- ===================== Mutations ===================== -->
-      <div class="section-title">Mutations</div>
+      <h2>Mutations</h2>
 
       <div class="form-row">
         <label>Pigment mutations?</label>
@@ -362,8 +323,7 @@
         <button type="button" class="random-button" data-select-id="illness-select">🔀</button>
       </div>
 
-      <!-- ===================== Extra ===================== -->
-      <div class="section-title">Extra</div>
+      <h2>Extra</h2>
 
       <div class="form-row">
         <label>Shading</label>
@@ -400,13 +360,17 @@
         </select>
       </div>
 
-      <div class="actions">
+      <div>
         <button type="button" class="randomize-all-button">Randomize</button>
+      </div>
+      <div>
         <button type="button" class="copy-url-button">Copy this utahraptor's URL</button>
+      </div>
+      <div>
         <button type="button" class="import-json-button">Import JSON data</button>
       </div>
 
-      <div class="sharecode-div form-row wide-row">
+      <div class="sharecode-div form-row">
         <label>
           Appearance Data <br />
           (does not contain all data; use only as reference)
@@ -447,7 +411,6 @@
     </footer>
 
     <script>
-      // Stop the form from submitting anywhere (buttons + Enter key)
       document.querySelector("form")?.addEventListener("submit", (e) => e.preventDefault());
 
       function randomizeSelect(selectEl) {
@@ -463,23 +426,19 @@
         selectEl.dispatchEvent(new Event("change", { bubbles: true }));
       }
 
-      // Random buttons: data-select-id is treated as either an id OR a class
       document.querySelectorAll(".random-button").forEach((button) => {
         button.addEventListener("click", (e) => {
           e.preventDefault();
           const key = button.dataset.selectId;
           if (!key) return;
-
           const select = document.getElementById(key) || document.querySelector("." + key);
           randomizeSelect(select);
         });
       });
 
-      // Mutation toggles: each checkbox controls ONLY its target select
       function setSelectEnabledByClass(className, enabled) {
         const sel = document.querySelector("." + className);
         if (!sel) return;
-
         sel.disabled = !enabled;
         if (!enabled) sel.selectedIndex = 0;
         sel.dispatchEvent(new Event("change", { bubbles: true }));
@@ -493,7 +452,6 @@
         update();
       });
 
-      // Randomize everything enabled and visible
       document.querySelector(".randomize-all-button")?.addEventListener("click", (e) => {
         e.preventDefault();
         document.querySelectorAll("select").forEach((sel) => {
