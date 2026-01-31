@@ -799,6 +799,61 @@
     });
   });
 </script>
+<script>
+  // ---- 1) Enable/disable "Pigment mutations" dropdowns ----
+  function setMutationsEnabled(enabled) {
+    const mutationSelect = document.querySelector(".mutation-type-select");
+    const tortiePatternSelect = document.querySelector(".tortie-pattern-select");
+    const tortieColourSelect = document.querySelector(".tortie-colour-select");
+
+    [mutationSelect, tortiePatternSelect, tortieColourSelect].forEach(sel => {
+      if (!sel) return;
+      sel.disabled = !enabled;
+
+      // If we're turning the system OFF, clear selections (optional but sane)
+      if (!enabled) {
+        sel.selectedIndex = 0;
+        sel.dispatchEvent(new Event("change", { bubbles: true }));
+      } else {
+        // If turning ON, poke change so sprite logic updates if it depends on enabled state
+        sel.dispatchEvent(new Event("change", { bubbles: true }));
+      }
+    });
+  }
+
+  // Hook checkbox
+  const tortieCheckbox = document.querySelector(".tortie-checkbox");
+  if (tortieCheckbox) {
+    tortieCheckbox.addEventListener("change", () => {
+      setMutationsEnabled(tortieCheckbox.checked);
+    });
+
+    // Initialize on load (in case URL/import sets it)
+    setMutationsEnabled(tortieCheckbox.checked);
+  }
+
+  // ---- 2) Remove the UI rows you said you don't want ----
+  // Targets are the select elements inside those rows.
+  const REMOVE_ROW_SELECTORS = [
+    ".white-patches-select",
+    ".points-select",
+    ".white-patches-tint-select",
+    ".vitiligo-select",
+    ".accessory-select",
+    ".lineart-select"
+  ];
+
+  REMOVE_ROW_SELECTORS.forEach(sel => {
+    document.querySelectorAll(sel).forEach(node => {
+      const row = node.closest(".form-row");
+      if (row) row.remove();
+    });
+  });
+
+  // Bonus: prevent form submit reloads if you haven't already fixed that elsewhere
+  document.querySelector("form")?.addEventListener("submit", e => e.preventDefault());
+  document.querySelectorAll("button").forEach(btn => (btn.type = "button"));
+</script>
 
     <script type="module" src="/src/main.ts"></script>
   </body>
