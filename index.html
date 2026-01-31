@@ -12,7 +12,43 @@
       name="google-site-verification"
       content="Pq-11M4oWkyd6Xt8Z-M-MTF0pm-jn-LPDpj9G-JcwD0"
     />
+
+    <style>
+      /* Tiny styling so sections don't look like chaos */
+      form {
+        max-width: 720px;
+      }
+      .section-title {
+        margin: 18px 0 10px;
+        padding: 10px 12px;
+        font-weight: 700;
+        border-radius: 10px;
+        background: rgb(0 0 0 / 0.06);
+      }
+      .form-row {
+        display: grid;
+        grid-template-columns: 160px 1fr auto;
+        gap: 10px;
+        align-items: center;
+        margin: 8px 0;
+      }
+      .form-row label {
+        font-weight: 600;
+      }
+      .form-row input[type="checkbox"] {
+        justify-self: start;
+      }
+      .wide-row {
+        grid-template-columns: 1fr;
+      }
+      .actions {
+        margin-top: 12px;
+        display: grid;
+        gap: 10px;
+      }
+    </style>
   </head>
+
   <body>
     <header>
       <a href="index.html">Utahraptor Maker</a> |
@@ -23,6 +59,9 @@
     <img draggable="true" class="cat-sprite-img" style="image-rendering: pixelated" />
 
     <form>
+      <!-- ===================== Genetics ===================== -->
+      <div class="section-title">Genetics</div>
+
       <div class="form-row">
         <label>Growth</label>
         <select class="sprite-no-select">
@@ -55,38 +94,11 @@
           <option>Tawny</option>
           <option>Jaguar</option>
         </select>
-        <!-- FIXED: used to point to pelt-name-select which doesn't exist -->
         <button type="button" class="random-button" data-select-id="pattern-type-select">🔀</button>
       </div>
 
       <div class="form-row">
-        <label>Colour</label>
-        <select class="colour-select">
-          <option>CREAM</option>
-          <option>PALEGINGER</option>
-          <option>GOLDEN</option>
-          <option>GINGER</option>
-          <option>DARKGINGER</option>
-          <option>SIENNA</option>
-          <option>GREY</option>
-          <option>DARKGREY</option>
-          <option>GHOST</option>
-          <option>BLACK</option>
-          <option>WHITE</option>
-          <option>PALEGREY</option>
-          <option>SILVER</option>
-          <option>LIGHTBROWN</option>
-          <option>LILAC</option>
-          <option>BROWN</option>
-          <option>GOLDEN-BROWN</option>
-          <option>DARKBROWN</option>
-          <option>CHOCOLATE</option>
-        </select>
-        <button type="button" class="random-button" data-select-id="colour-select">🔀</button>
-      </div>
-
- <div class="form-row">
-        <label>Eye Colour</label>
+        <label>Eye color</label>
         <select class="eye-colour-select">
           <option>YELLOW</option>
           <option>AMBER</option>
@@ -114,7 +126,7 @@
       </div>
 
       <div class="form-row">
-        <label>Eye Colour 2</label>
+        <label>Eye color 2</label>
         <select class="eye-colour2-select">
           <option value=""></option>
           <option>YELLOW</option>
@@ -143,6 +155,32 @@
       </div>
 
       <div class="form-row">
+        <label>Colour</label>
+        <select class="colour-select">
+          <option>CREAM</option>
+          <option>PALEGINGER</option>
+          <option>GOLDEN</option>
+          <option>GINGER</option>
+          <option>DARKGINGER</option>
+          <option>SIENNA</option>
+          <option>GREY</option>
+          <option>DARKGREY</option>
+          <option>GHOST</option>
+          <option>BLACK</option>
+          <option>WHITE</option>
+          <option>PALEGREY</option>
+          <option>SILVER</option>
+          <option>LIGHTBROWN</option>
+          <option>LILAC</option>
+          <option>BROWN</option>
+          <option>GOLDEN-BROWN</option>
+          <option>DARKBROWN</option>
+          <option>CHOCOLATE</option>
+        </select>
+        <button type="button" class="random-button" data-select-id="colour-select">🔀</button>
+      </div>
+
+      <div class="form-row">
         <label>Skin</label>
         <select class="skin-colour-select">
           <option>BLACK</option>
@@ -166,85 +204,9 @@
         </select>
         <button type="button" class="random-button" data-select-id="skin-colour-select">🔀</button>
       </div>
-      
-      <!-- Pigment mutations -->
-      <div class="form-row">
-        <label>Pigment mutations?</label>
-        <input class="mutation-toggle" data-target="pigment-mutation-select" type="checkbox" />
-      </div>
-      <div class="form-row">
-        <label>Pigment Mutation Type</label>
-        <select disabled class="pigment-mutation-select">
-          <option value="">(none)</option>
-          <option>Albino</option>
-          <option>Melanistic</option>
-          <option>Pied</option>
-          <option>Leucism</option>
-          <option>Piebald</option>
-          <option>Melanin Overproduction</option>
-        </select>
-        <button type="button" class="random-button" data-select-id="pigment-mutation-select">🔀</button>
-      </div>
-
-      <!-- Neurological mutations -->
-      <div class="form-row">
-        <label>Neurological mutations?</label>
-        <input class="mutation-toggle" data-target="neuro-mutation-select" type="checkbox" />
-      </div>
-      <div class="form-row">
-        <label>Neurological Mutation Type</label>
-        <select disabled class="neuro-mutation-select">
-          <option value="">(none)</option>
-          <option>CIPA (Congenital Insensitivity to Pain)</option>
-          <option>Cerebellar Hypoplasia</option>
-          <option>Motor Spasms</option>
-          <option>Hypoaggresssion</option>
-          <option>Hyperaggression</option>
-        </select>
-        <button type="button" class="random-button" data-select-id="neuro-mutation-select">🔀</button>
-      </div>
-
-      <!-- Physical mutations -->
-      <div class="form-row">
-        <label>Physical Mutations?</label>
-        <input class="mutation-toggle" data-target="physical-mutation-select" type="checkbox" />
-      </div>
-      <div class="form-row">
-        <label>Physical Mutation Type</label>
-        <select disabled class="physical-mutation-select">
-          <option value="">(none)</option>
-          <option>Blindness</option>
-          <option>Deafness</option>
-          <option>Polydactyl</option>
-          <option>Polycephaly</option>
-          <option>Split Tail</option>
-          <option>Dolichonychia</option>
-          <option>Polydontia</option>
-        </select>
-        <button type="button" class="random-button" data-select-id="physical-mutation-select">🔀</button>
-      </div>
 
       <div class="form-row">
-        <label>Tint</label>
-        <select class="tint-select">
-          <option>none</option>
-          <option>pink</option>
-          <option>gray</option>
-          <option>red</option>
-          <option>black</option>
-          <option>orange</option>
-          <option>yellow</option>
-          <option>purple</option>
-          <option>blue</option>
-          <option>dilute</option>
-          <option>warmdilute</option>
-          <option>cooldilute</option>
-        </select>
-        <button type="button" class="random-button" data-select-id="tint-select">🔀</button>
-      </div>
-
-      <div class="form-row">
-        <label>Scar</label>
+        <label>Scars</label>
         <select class="scar-select">
           <option value=""></option>
           <optgroup label="Animal Scars (scars1)">
@@ -310,7 +272,82 @@
         <button type="button" class="random-button" data-select-id="scar-select">🔀</button>
       </div>
 
-      <!-- Illnesses / Disease -->
+      <div class="form-row">
+        <label>Tint</label>
+        <select class="tint-select">
+          <option>none</option>
+          <option>pink</option>
+          <option>gray</option>
+          <option>red</option>
+          <option>black</option>
+          <option>orange</option>
+          <option>yellow</option>
+          <option>purple</option>
+          <option>blue</option>
+          <option>dilute</option>
+          <option>warmdilute</option>
+          <option>cooldilute</option>
+        </select>
+        <button type="button" class="random-button" data-select-id="tint-select">🔀</button>
+      </div>
+
+      <!-- ===================== Mutations ===================== -->
+      <div class="section-title">Mutations</div>
+
+      <div class="form-row">
+        <label>Pigment mutations?</label>
+        <input class="mutation-toggle" data-target="pigment-mutation-select" type="checkbox" />
+      </div>
+      <div class="form-row">
+        <label>Pigment Mutation Type</label>
+        <select disabled class="pigment-mutation-select">
+          <option value="">(none)</option>
+          <option>Albino</option>
+          <option>Melanistic</option>
+          <option>Pied</option>
+          <option>Leucism</option>
+          <option>Piebald</option>
+          <option>Melanin Overproduction</option>
+        </select>
+        <button type="button" class="random-button" data-select-id="pigment-mutation-select">🔀</button>
+      </div>
+
+      <div class="form-row">
+        <label>Neurological mutations?</label>
+        <input class="mutation-toggle" data-target="neuro-mutation-select" type="checkbox" />
+      </div>
+      <div class="form-row">
+        <label>Neurological Mutation Type</label>
+        <select disabled class="neuro-mutation-select">
+          <option value="">(none)</option>
+          <option>CIPA (Congenital Insensitivity to Pain)</option>
+          <option>Cerebellar Hypoplasia</option>
+          <option>Motor Spasms</option>
+          <option>Hypoaggresssion</option>
+          <option>Hyperaggression</option>
+        </select>
+        <button type="button" class="random-button" data-select-id="neuro-mutation-select">🔀</button>
+      </div>
+
+      <div class="form-row">
+        <label>Physical Mutations?</label>
+        <input class="mutation-toggle" data-target="physical-mutation-select" type="checkbox" />
+      </div>
+      <div class="form-row">
+        <label>Physical Mutation Type</label>
+        <select disabled class="physical-mutation-select">
+          <option value="">(none)</option>
+          <option>Blindness</option>
+          <option>Deafness</option>
+          <option>Polydactyl</option>
+          <option>Polycephaly</option>
+          <option>Split Tail</option>
+          <option>Dolichonychia</option>
+          <option>Polydontia</option>
+        </select>
+        <button type="button" class="random-button" data-select-id="physical-mutation-select">🔀</button>
+      </div>
+
       <div class="form-row">
         <label>Illnesses/Disease?</label>
         <input class="mutation-toggle" data-target="illness-select" type="checkbox" />
@@ -324,6 +361,9 @@
         </select>
         <button type="button" class="random-button" data-select-id="illness-select">🔀</button>
       </div>
+
+      <!-- ===================== Extra ===================== -->
+      <div class="section-title">Extra</div>
 
       <div class="form-row">
         <label>Shading</label>
@@ -360,17 +400,13 @@
         </select>
       </div>
 
-      <div>
+      <div class="actions">
         <button type="button" class="randomize-all-button">Randomize</button>
-      </div>
-      <div>
         <button type="button" class="copy-url-button">Copy this utahraptor's URL</button>
-      </div>
-      <div>
         <button type="button" class="import-json-button">Import JSON data</button>
       </div>
 
-      <div class="sharecode-div form-row">
+      <div class="sharecode-div form-row wide-row">
         <label>
           Appearance Data <br />
           (does not contain all data; use only as reference)
@@ -414,14 +450,11 @@
       // Stop the form from submitting anywhere (buttons + Enter key)
       document.querySelector("form")?.addEventListener("submit", (e) => e.preventDefault());
 
-      // Randomize a given <select> element
       function randomizeSelect(selectEl) {
         if (!selectEl || selectEl.disabled) return;
 
-        // Prefer not to pick empty "(none)" options unless that's literally all there is
         const options = Array.from(selectEl.options).filter((o) => !o.disabled);
         const nonEmpty = options.filter((o) => (o.value ?? o.textContent ?? "").trim() !== "");
-
         const pool = nonEmpty.length ? nonEmpty : options;
         if (!pool.length) return;
 
@@ -434,14 +467,10 @@
       document.querySelectorAll(".random-button").forEach((button) => {
         button.addEventListener("click", (e) => {
           e.preventDefault();
-
           const key = button.dataset.selectId;
           if (!key) return;
 
-          const select =
-            document.getElementById(key) ||
-            document.querySelector("." + key);
-
+          const select = document.getElementById(key) || document.querySelector("." + key);
           randomizeSelect(select);
         });
       });
@@ -452,29 +481,22 @@
         if (!sel) return;
 
         sel.disabled = !enabled;
-
-        // Clear when turned off so you don't keep a hidden mutation selected
-        if (!enabled) {
-          sel.selectedIndex = 0;
-        }
-
+        if (!enabled) sel.selectedIndex = 0;
         sel.dispatchEvent(new Event("change", { bubbles: true }));
       }
 
       document.querySelectorAll(".mutation-toggle").forEach((cb) => {
         const className = cb.dataset.target;
         if (!className) return;
-
         const update = () => setSelectEnabledByClass(className, cb.checked);
         cb.addEventListener("change", update);
-        update(); // init on load
+        update();
       });
 
-      // "Randomize" button: randomize everything that is enabled and visible
+      // Randomize everything enabled and visible
       document.querySelector(".randomize-all-button")?.addEventListener("click", (e) => {
         e.preventDefault();
         document.querySelectorAll("select").forEach((sel) => {
-          // skip hidden selects if you ever hide rows later
           const row = sel.closest(".form-row");
           if (row && row.style.display === "none") return;
           randomizeSelect(sel);
